@@ -1,0 +1,33 @@
+.navbar{
+    width: 100%;
+
+    .page_name{
+        background: #F0FFFF;
+        h2{
+            text-align: center;
+            color: black;
+        }
+    }
+    .menu{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: black;
+        .options{            
+            ul{
+                list-style: none;
+                li{
+                    display:inline;
+                    color: white;
+                } 
+            }
+        }
+        .div_car{
+            img{
+                width: 20px;
+                height: 20px;
+                object-fit: cover;
+            }
+        }
+    }
+}
