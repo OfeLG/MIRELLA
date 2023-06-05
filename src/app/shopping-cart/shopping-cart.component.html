@@ -1,0 +1,45 @@
+<div class="header">
+    <ul>
+        <li>Producto</li>
+        <li>Nombre</li>
+        <li>Precio x Unidad</li>
+        <li>Cantidad</li>
+        <li>Precio x Total</li>
+    </ul>
+</div>
+<hr>
+<div class="container_cart">
+    <div class="div_products" *ngFor="let data of received_data, let indice=index">
+        <img class="img_product" src="{{data.img}}" alt="Imagen del producto">
+        <div class="div_name">
+            <p>{{data.nombre.substring(0, 22)}}</p>
+        </div>
+        <div class="div_prices">
+            <del>${{data.precio}}</del>
+            <p>${{data.precio_final}}</p>
+        </div>
+        <div class="div_amount">
+            <button (click)="operatingAmount('-', indice)">-</button>
+            <div class="div_text_amount">{{data.cantidad}}</div>
+            <button (click)="operatingAmount('+', indice)">+</button>
+        </div>
+        <p>{{data.precio_final*data.cantidad}}</p>
+        <img (click)="remove(indice)" class="img_remove" src="../../assets/images/remove.png" alt="Icono de eliminar">
+    </div>
+</div>
+
+<div class="div_total">
+    <div>
+        <h3>Sub. Total</h3>
+        <p>${{total}}</p>
+    </div>
+    <div>
+        <h3>IVA</h3>
+        <p>{{21}}%</p>
+    </div>
+    <div>
+        <h3>Total</h3>
+        <p>${{total*(21/100)+total}}</p>
+    </div>
+    <button>PAGAR</button>
+</div>

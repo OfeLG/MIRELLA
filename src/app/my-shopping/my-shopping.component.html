@@ -1,0 +1,57 @@
+<h2>COMPRAS</h2>
+<div class="header">
+    <ul>
+        <li>Referencia</li>
+        <li>Fecha Pedido</li>
+        <li>Fecha Estimada</li>
+        <li>Fecha Real</li>
+        <li>Total</li>
+    </ul>
+</div>
+<hr>
+<div class="container_list_invoice">
+    <div class="div_invoice" *ngFor="let invoice of array_invoice, let indice=index">
+        <div>
+            <p>{{invoice.referencia}}</p>
+            <p>{{invoice.fecha_pedido}}</p>
+            <p>{{invoice.fecha_estimada}}</p>
+            <p>{{invoice.fecha_real}}</p>
+            <p>{{invoice.total}}</p>
+        </div>
+        <img (click)="openModal(indice)" class="img_eye" src="../../assets/images/eye.png" alt="Icono de ver">
+    </div>
+</div>
+
+
+<div class="modal" [ngClass]="{'show': showModal}">
+    <div class="modal_content" [ngClass]="{'show': showModal}">
+        <div class="style_close" (click)="closeModal()">
+            <img src="../../assets/images/close.png" alt="">
+        </div>
+        <h2>FACTURA</h2>
+        <div class="invoice_header">
+            <div class="header_left">
+                <!-- AÑADIR EL NOMBRE DEL CLIENTE UTILIZANDO LA BASE DE DATOS -->
+                <div>
+                    <p>BRANDON MENA</p>
+                    <p>Cliente</p>
+                </div>
+                <!-- AÑADIR LA DIRECCCIÓN UTILIZANDO LA BASE DE DATOS -->
+                <div>
+                    <p>BARRANQUILLA</p>
+                    <p>Carretera Muelle 38 31-32 Avila, Avila</p>
+                </div>
+            </div>
+             <!-- AÑADIR LAS FECHAS UTILIZANDO LA BASE DE DATOS -->
+            <div class="header_right">
+                <P>REFERENCIA: <span>1001</span></P>
+                <P>FECHA PEDIDO: <span>10-03-23</span></P>
+                <P>FECHA ESTIMADA: <span>10-03-23</span></P>
+                <P>FECHA ENTREGA: <span>10-03-23</span></P>
+            </div>
+        </div>
+        <button class="add_product">AÑADIR</button>
+    </div>
+</div>
+
+

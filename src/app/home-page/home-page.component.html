@@ -1,2 +1,40 @@
-<app-navbar></app-navbar>
-<p>home-page works!</p>
+<div class="div_search">
+    <input type="text" placeholder="Buscar productos">
+    <img src="../../assets/images/search.png" alt="Icono de buscar">
+</div>
+
+<div class="div_all_products">
+    <div class="div_card" *ngFor="let card of array_products, let indice=index">
+        <img src="{{card.img}}" alt="Imgen del producto" (click)="openModal(indice)">
+        <div class="info_card">
+            <p>{{card.nombre}}</p>
+            <p>Descuento: {{card.descuento}}%</p>
+            <p>Precio: <del>${{card.precio}}</del> ${{card.precio_final}}</p>
+        </div>
+        <div class="add_card" (click)="addProduct(indice)">
+            <img src="../../assets/images/add.png" alt="Icono de agregar">
+        </div>
+    </div>
+</div>
+
+<div class="modal" [ngClass]="{'show': showModal}">
+    <div class="modal_content" [ngClass]="{'show': showModal}">
+        <div class="style_close" (click)="closeModal()">
+            <img src="../../assets/images/close.png" alt="">
+        </div>
+        <img class="img_detail" src="{{array_products[index_detail].img}}" alt="Imagen del producto">
+        <div class="info_detail">
+            <h2>{{array_products[index_detail].nombre}}</h2>
+            <p class="description">{{array_products[index_detail].descripcion}}</p>
+            <p>Descuento: {{array_products[index_detail].descuento}}%</p>
+            <p>Precio: <del>${{array_products[index_detail].precio *array_products[index_detail].cantidad}}</del>  -  ${{array_products[index_detail].precio_final*array_products[index_detail].cantidad}}</p>
+            <div class="div_amount">
+                <button (click)="operatingAmount('-')">-</button>
+                <div class="div_text_amount">{{amount}}</div>
+                <button (click)="operatingAmount('+')">+</button>
+            </div>
+        </div>
+        <button class="add_product" (click)="addProduct(index_detail)">AÑADIR</button>
+    </div>
+</div>
+

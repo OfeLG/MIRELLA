@@ -6,15 +6,15 @@
         <div class="options">
             <ul>
                 <li>
-                    <a>Inicio</a>
+                    <a [routerLink]="['/home']">Inicio</a>
                 </li>
                 <li>
-                    <a>Mis compras</a>
+                    <a [routerLink]="['/my-shopping']">Mis compras</a>
                 </li>
             </ul>
         </div>
         <div class="div_car">
-            <img src="../../assets/images/car.png" alt="Carrito de compra">
+            <img (click)="redirectToShoppingCart()" src="../../assets/images/car.png" alt="Carrito de compra">
         </div>
     </div>
 </div>
