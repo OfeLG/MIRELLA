@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DatosService } from '../datos.service';
+import { BackendService } from '../services/productos.service';
+
 
 @Component({
   selector: 'app-home-page',
@@ -7,15 +9,15 @@ import { DatosService } from '../datos.service';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent {
+  datos: any[] = [];
   public array_products: Array<any>;
   public showModal: Boolean;
   public index_detail: any;
   public amount;
   // public cart:Array<any>;
-  public cart: any;
+  public cart: any; 
 
-
-  constructor(private datosService: DatosService){
+  constructor(private datosService: DatosService, private backendService:BackendService){
     // this.cart=[];
     this.cart={};
     this.amount=1;
@@ -142,6 +144,7 @@ export class HomePageComponent {
         cantidad: 1,
         img: "https://cdn.shopify.com/s/files/1/0366/4288/1676/products/Set-3-Collares-Indi-Oro-Entrelazos_1.jpg?v=1670862391"
       }
+      
     ];
   }
   openModal(index: any){
@@ -170,4 +173,4 @@ export class HomePageComponent {
       this.amount= this.amount-1;
     }
   }
-}
+} 
